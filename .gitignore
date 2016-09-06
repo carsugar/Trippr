@@ -1,3 +1,4 @@
 node_modules
 client/bundle.js
 /server/testData.js
+.env

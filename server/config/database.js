@@ -1,11 +1,15 @@
+var path = require('path')
+require('dotenv').config();
+
+
 const Sequelize = require('sequelize');
 
 //Need to add a database that is mysql/postgres/sql compatible
 //here for the db to work
-var sequelize = new Sequelize('', '', '', {
+var sequelize = new Sequelize('trippr', process.env.db_username, process.env.db_password, {
   host: '',
-  dialect: 'postgres',
-  port: '10860',
+  dialect: 'mysql',
+  port: '3306',
   //logging: false,
   options: {
     timezone: 'America/Los_Angeles',
