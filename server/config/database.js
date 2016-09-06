@@ -7,7 +7,7 @@ const Sequelize = require('sequelize');
 //Need to add a database that is mysql/postgres/sql compatible
 //here for the db to work
 var sequelize = new Sequelize('trippr', process.env.db_username, process.env.db_password, {
-  host: '',
+  host: 'mysql.kanadachi.com',
   dialect: 'mysql',
   port: '3306',
   //logging: false,
