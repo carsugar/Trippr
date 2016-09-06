@@ -1,5 +1,7 @@
 # trppr
 
+OmakaseInc has picked up Trippr's project and will add new features
+
 This project is a long distance carpooling application.
 
 # Getting Started
