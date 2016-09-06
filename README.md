@@ -32,7 +32,8 @@ Open a browser and type localhost:3000 to see the application.
 Eugene Row |
 Kinjal Chatterjee |
 Sean Cox |
-Calvin Lee |
+Calvin Lee
+
 Carling Sugarman |
 Jonathan Mitchell |
 Daria Burinskaya |
