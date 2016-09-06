@@ -161,6 +161,7 @@ module.exports = {
       });
       console.log('\033[34m <TRPPR> Sending data: \033[0m');
       console.log(tripsList);
+      console.log('tripList return value inside Trip.findAll inside tripController', tripsList)
       res.json(tripsList);
     })
     .catch(function(err) {
