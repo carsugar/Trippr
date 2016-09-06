@@ -1,6 +1,6 @@
-# trppr
+# Trippr
 
-OmakaseInc has picked up Trippr's project and will add new features
+OmakaseInc has picked up Trippr's project and will add new features.
 
 This project is a long distance carpooling application.
 
@@ -20,7 +20,8 @@ This project is a long distance carpooling application.
 Open a browser and type localhost:3000 to see the application.
 
 # Built with
-- Node express
+- Node
+- Express
 - Sequelize
 - React
 - Bootstrap
@@ -32,3 +33,7 @@ Eugene Row
 Kinjal Chatterjee
 Sean Cox
 Calvin Lee
+Carling Sugarman
+Jonathan Mitchell
+Daria Burinskaya
+Michael Tran
