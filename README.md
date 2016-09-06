@@ -29,11 +29,11 @@ Open a browser and type localhost:3000 to see the application.
 
 # Authors
 
-Eugene Row
-Kinjal Chatterjee
-Sean Cox
-Calvin Lee
-Carling Sugarman
-Jonathan Mitchell
-Daria Burinskaya
+Eugene Row |
+Kinjal Chatterjee |
+Sean Cox |
+Calvin Lee |
+Carling Sugarman |
+Jonathan Mitchell |
+Daria Burinskaya |
 Michael Tran
