@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import moment from 'moment';
+import {browserHistory} from 'react-router';
 
 class Trip extends Component {
     constructor(props) {
       super(props);
       this.state = {};
-      this.reserveSeat = this.reserveSeat.bind(this);
+      this.directToPayment = this.directToPayment.bind(this);
     }
 
-    reserveSeat() {
-      this.props.reserveSeat({passengerId: localStorage.getItem('id'), tripId: this.props.trip.id});
+    directToPayment() {
+      const link = '/payment/' + this.props.trip.id;
+      browserHistory.push(link);
+      // use on payment page instead
+      // this.props.reserveSeat({passengerId: localStorage.getItem('id'), tripId: this.props.trip.id});
     }
 
     render() {
@@ -61,7 +65,7 @@ class Trip extends Component {
                   <div className="col-sm-12 other">
                       <div id="tripTag">Trip Details:</div>
                       <p>{this.props.trip.description}</p>
-                          <button id="rsvpButton" onClick= {this.reserveSeat} >Book Seat</button>
+                          <button id="rsvpButton" onClick= {this.directToPayment} >Pay and Reserve Seat</button>
                   </div>
               </div>
 

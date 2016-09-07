@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js",
+    "start": "webpack -w & nodemon server/server.js",
     "bundle": "node_modules/.bin/webpack -w",
     "postinstall": "node_modules/.bin/webpack -p"
   },
@@ -49,6 +49,7 @@
     "react-router": "^2.7.0",
     "request": "^2.74.0",
     "sequelize": "^3.24.1",
+    "stripe": "^4.10.0",
     "webpack": "^1.13.2"
   },
   "devDependencies": {
