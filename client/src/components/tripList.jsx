@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Trip from './trip.jsx';
-import API_KEY from '../../API_KEY.js'
+import API_KEY from '../../API_KEY.jsx';
 
 //  props: {
 //       reserveSeat: function() {},
@@ -27,7 +27,6 @@ import API_KEY from '../../API_KEY.js'
 //   ]
 // }
    
-console.log('api key is ', API_KEY)
 
   const TripList = (props) => {
      console.log('props inside triplist', props)
