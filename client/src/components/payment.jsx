@@ -42,7 +42,7 @@ class Payment extends Component {
               <input className="form-control" type="text" size={4} maxLength={4} data-stripe="cvc" />
             </div>
             <div className="submit-container">
-              <button className="btn btn-primary" type="submit" value="Submit Payment" />
+              <button className="btn btn-primary" type="submit">Submit Payment</button>
             </div>
           </form>
         </div>
