@@ -11,7 +11,7 @@ const testUser1 = User.create({
   lastName: 'SkyWalker',
   password: '123',
   email: 'lskywalker@gmail.com',
-  description: 'Let's go on an adventure to a galaxy far, far away'
+  description: 'Let\'s go on an adventure to a galaxy far, far away'
 });
 
 const testUser2 = User.create({
@@ -27,7 +27,7 @@ const testUser2 = User.create({
   lastName: 'Droid',
   password: '123',
   email: 'r2d2@gmail.com',
-  description: 'I'm an excellent navigator'
+  description: 'I\'m an excellent navigator'
 });
 
 const testUser4 = User.create({
@@ -44,5 +44,5 @@ const testUser5 = User.create({
   lastName: 'Kenobi',
   password: '123',
   email: 'owkenobi@gmail.com',
-  description: 'I used to have a single braid in my hair. Now I'm a robe-wearing burner'
+  description: 'I used to have a single braid in my hair. Now I\'m a robe-wearing burner'
 });

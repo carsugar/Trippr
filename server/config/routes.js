@@ -2,12 +2,22 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 const tripController = require('../trips/tripController');
 const userController = require('../users/userController');
+const paymentController = require('../payment/paymentController');
 
 module.exports = (app, express) => {
 
   /*
   *  User API Requests
   */
+
+  app.post('/pay', paymentController.chargeCustomer);
+  // Takes the following:
+  // req.body.number,
+  // req.body.exp_month,
+  // req.body.exp_year,
+  // req.body.cvc
+  // Succes -> 200
+  // Failure -> 500
 
   app.post('/signup', userController.createUser);
   // Takes the following(description not required):

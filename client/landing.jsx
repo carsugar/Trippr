@@ -8,6 +8,7 @@ import CreateTrip from './src/components/createTrip.jsx';
 import Signup from './src/components/signUp.jsx';
 import Logout from './src/components/logout.jsx';
 import UserProfile from './src/components/userProfile.jsx';
+import Payment from './src/components/payment.jsx';
 
 class Landing extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ render((
   <Router history={browserHistory}>
     <Route path='/' component={Landing} />
     <Route path='app(/:location)' name='app' component={App} />
+    <Route path='payment(/:trip)' name='payment' component={Payment} />
     <Route path='create' component={CreateTrip} />
     <Route path='signUp' component={Signup} />
     <Route path='logOut' component={Logout} />

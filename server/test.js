@@ -67,7 +67,7 @@ const trip4 = Trip.create({
   startCity: 'San Franisco',
   startState: 'CA',
   endSt: '413 Santa Monica Blvd',
-  endCity: 'San Monica',
+  endCity: 'Santa Monica',
   endState: 'CA',
   numSeats: 3,
   seatPrice: 20,
