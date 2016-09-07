@@ -50,6 +50,29 @@
   margin-bottom: 20px;
 }
 
+input.geosuggest__input {
+    border-style: transparent !important;
+    width: 500px;
+    -webkit-appearance: none;
+    border: transparent;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+geosuggest[type=text]:focus {
+    width: 100%;
+}
+
+.geosuggest__suggests--hidden {
+  max-height: 0;
+  overflow: hidden;
+  border-width: 0;
+}
+
+div.geosuggest__suggests-wrapper{
+  background-color: aliceblue
+}
+
 
 body {
   padding-top: 90px;
