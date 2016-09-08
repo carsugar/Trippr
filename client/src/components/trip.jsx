@@ -16,7 +16,8 @@ class Trip extends Component {
                    this.props.trip.driverName + '/' +
                    this.props.trip.startCity + '/' +
                    this.props.trip.endCity + '/' +
-                   this.props.trip.tripDate;
+                   this.props.trip.tripDate + '/' +
+                   this.props.trip.id;
 
       browserHistory.push(link);
       // use on payment page instead
