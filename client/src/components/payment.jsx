@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import {render} from 'react-dom';
 import axios from 'axios';
+import {browserHistory} from 'react-router';
 
 import NavBar from './navBar.jsx';
 
 class Payment extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      page: 'paymentForm'
+    };
 
     this.chargeCustomer = this.chargeCustomer.bind(this);
     this.handleNumberInput = this.handleNumberInput.bind(this);
@@ -17,17 +20,31 @@ class Payment extends Component {
   }
 
   componentWillMount() {
-    this.setState({trip: this.props.params.trip});
+    this.setState({driver: this.props.params.driver});
+    this.setState({start: this.props.params.start});
+    this.setState({end: this.props.params.end});
+    this.setState({date: this.props.params.date});
   }
 
   chargeCustomer() {
+    this.setState({page: 'spinner'});
     var data = {
       "number": this.state.number,
       "exp_month": this.state.exp_month,
       "exp_year": this.state.exp_year,
       "cvc": this.state.cvc
     };
-    axios.post('/pay', data);
+
+    axios.post('/pay', data)
+    .then((response) => {
+      console.log(response);
+      this.setState({page: 'paymentSuccess'});
+    })
+    .catch((error) => {
+      console.log(error);
+      this.setState({page: 'paymentFailure'});
+    });
+
   }
 
   handleNumberInput(evt) {
@@ -47,39 +64,74 @@ class Payment extends Component {
   }
 
   render () {
-    return (
-      <div>
-        <NavBar />
-        <div className="payment-container">
-          <h1>Save Your Spot</h1>
-          <form id="payment-form">
-            <span className="payment-errors"></span>
+    if (this.state.page === 'paymentForm') {
+      return (
+        <div>
+          <NavBar />
+          <div className="payment-container">
+            <h1>Save Your Spot</h1>
+            <div id="payment-form">
+              <span className="payment-errors"></span>
 
-            <div className="form-row">
-              <span>Card Number</span>
-              <input onChange={(evt) => this.handleNumberInput(evt)} className="form-control" type="text" size={20} maxLength={20} />
-            </div>
+              <div className="form-row">
+                <span>Card Number</span>
+                <input onChange={(evt) => this.handleNumberInput(evt)} className="form-control" type="text" size={20} maxLength={20} />
+              </div>
 
-            <div className="form-row">
-              <span>Expiration (MM/YY)</span>
-              <div className="expiration">
-                <input onChange={(evt) => this.handleMonthInput(evt)} className="form-control" type="text" size={2} maxLength={2} />
-                <span>/</span>
-                <input onChange={(evt) => this.handleYearInput(evt)} className="form-control flush-left" type="text" size={2} maxLength={2} />
+              <div className="form-row">
+                <span>Expiration (MM/YY)</span>
+                <div className="expiration">
+                  <input onChange={(evt) => this.handleMonthInput(evt)} className="form-control" type="text" size={2} maxLength={2} />
+                  <span>/</span>
+                  <input onChange={(evt) => this.handleYearInput(evt)} className="form-control flush-left" type="text" size={2} maxLength={2} />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <span>CVC</span>
+                <input onChange={(evt) => this.handleCvcInput(evt)} className="form-control" type="text" size={4} maxLength={4} />
+              </div>
+              <div className="submit-container">
+                <button onClick={this.chargeCustomer} className="btn btn-primary" type="submit">Submit Payment</button>
               </div>
             </div>
-
-            <div className="form-row">
-              <span>CVC</span>
-              <input onChange={(evt) => this.handleCvcInput(evt)} className="form-control" type="text" size={4} maxLength={4} />
-            </div>
-            <div className="submit-container">
-              <button onClick={this.chargeCustomer} className="btn btn-primary" type="submit">Submit Payment</button>
-            </div>
-          </form>
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
+    if (this.state.page === 'spinner') {
+      return (
+        <div>
+          <NavBar />
+          <div className="container">
+           </div>
+          <img src={'/car.gif'} className="spinner"/>
+        </div>
+      )
+    }
+    if (this.state.page === 'paymentSuccess') {
+      return (
+        <div>
+          <NavBar />
+          <div className="container">
+            <h1>You've got a spot!</h1>
+            <p>Thanks for your payment.  You are all set for your trip with {this.state.driver} from {this.state.start} to {this.state.end} on {this.state.date}.</p>
+           </div>
+        </div>
+      )
+    }
+    if (this.state.page === 'paymentFailure') {
+      return (
+        <div>
+          <NavBar />
+          <div className="container">
+            <h1>Oops!</h1>
+            <p>There was a problem with your payment.  Please try again.</p>
+           </div>
+        </div>
+      )
+    }
+
   }
 }
 

@@ -1,5 +1,6 @@
 var secret_key = require('../../stripeConfig.js');
 var stripe = require('stripe')(secret_key);
+var Promise = require('bluebird');
 
 module.exports = {
   chargeCustomer: function(req, res) {
@@ -15,23 +16,27 @@ module.exports = {
         // "exp_year": 2017,
         // "cvc": '123'
       }
-    }, function(err, token) {
-      if (err) {
-        res.status(500).send('There was an error accepting this card');
-      } else {
+    })
+    .then(
+      function(token) {
         stripe.charges.create({
           amount: 2000,
           currency: "usd",
           source: token.id,
           description: "Charge for Trippr"
-        }, function(err, charge) {
-          if (err) {
+        })
+        .then(
+          function(charge) {
+            res.status(200).send('Succesfully charged')
+          },
+          function(error) {
             res.status(500).send('There was an error with this charge');
-          } else {
-            res.status(200).send('Succesfully charged');
           }
-        });
+        )
+      },
+      function(error) {
+        res.status(500).send('There was an error accepting this card');
       }
-    });
+    );
   }
-};
+}

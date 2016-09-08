@@ -11,7 +11,13 @@ class Trip extends Component {
     }
 
     directToPayment() {
-      const link = '/payment/' + this.props.trip.id;
+      console.log('trip', this.props.trip)
+      const link = '/payment/' +
+                   this.props.trip.driverName + '/' +
+                   this.props.trip.startCity //+ '/' +
+                  //  this.props.trip.endCity + '/' +
+                  //  this.props.trip.tripDate;
+
       browserHistory.push(link);
       // use on payment page instead
       // this.props.reserveSeat({passengerId: localStorage.getItem('id'), tripId: this.props.trip.id});
