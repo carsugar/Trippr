@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -w & nodemon server/server.js",
-    "bundle": "node_modules/.bin/webpack -w",
-    "postinstall": "node_modules/.bin/webpack -p"
+    "bundle": "webpack -w",
+    "postinstall": "webpack -p"
   },
   "engines": {
     "node": "6.3.1"
