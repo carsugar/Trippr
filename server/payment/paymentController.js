@@ -22,7 +22,7 @@ module.exports = {
     .then(
       function(token) {
         stripe.charges.create({
-          amount: 2000,
+          amount: 100*req.body.price,
           currency: "usd",
           source: token.id,
           description: "Charge for Trippr"
@@ -40,5 +40,14 @@ module.exports = {
         res.status(500).send('There was an error accepting this card');
       }
     );
+  },
+
+  payDriver: function(req, res) {
+    stripe.transfers.create({
+      amount: 100*req.body.price,
+      currency: "usd",
+      destination: req.body.customerId,
+      description: "Payment from Trippr"
+    })
   }
 }
