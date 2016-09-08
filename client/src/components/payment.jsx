@@ -24,6 +24,7 @@ class Payment extends Component {
     this.setState({start: this.props.params.start});
     this.setState({end: this.props.params.end});
     this.setState({date: this.props.params.date});
+    this.setState({id: this.props.params.id});
   }
 
   chargeCustomer() {
@@ -37,14 +38,27 @@ class Payment extends Component {
 
     axios.post('/pay', data)
     .then((response) => {
-      console.log(response);
       this.setState({page: 'paymentSuccess'});
+      this.reserveSeat({passengerId: localStorage.getItem('id'), tripId: this.state.id});
     })
     .catch((error) => {
-      console.log(error);
       this.setState({page: 'paymentFailure'});
     });
 
+  }
+
+  reserveSeat(reserveObj) {
+    if(localStorage.getItem('token')) {
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+    }
+
+    axios.post('/reserveSeat', reserveObj)
+    .then(function (response) {
+      console.log('Seat reserved!', response.data)
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
   }
 
   handleNumberInput(evt) {
