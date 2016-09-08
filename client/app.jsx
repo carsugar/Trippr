@@ -72,7 +72,7 @@ class App extends Component {
 
 componentWillMount() {
     if(this.props.params.location) {
-      this.state.landingLocation = this.props.params.location;
+      this.setState({landingLocation: this.props.params.location});
       this.getTrips({endLocation: this.state.landingLocation})
       this.props.params.location = undefined;
       this.state.landingLocation = ''
