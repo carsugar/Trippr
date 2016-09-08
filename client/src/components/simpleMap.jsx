@@ -6,7 +6,14 @@ import {
 } from "react-google-maps";
 
 const SimpleMap = (props) => {
-	console.log('props inside simpleMap are: ',props)
+	console.log('props inside simpleMap****** are: ',props)
+ 
+
+
+
+
+
+
 	return (
   <section style={{ height: `100%` }}>
     <GoogleMapLoader
@@ -14,14 +21,14 @@ const SimpleMap = (props) => {
         <div
           {...props.containerElementProps}
           style={{
-            height: `100%`          }}
+            height: `100%`  }}
         />
       }
       googleMapElement={
         <GoogleMap
           ref={(map) => console.log(map)}
           defaultZoom={3}
-          defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+          defaultCenter={{ lat: -1.4 , lng: -1.4}}
           onClick={props.onMapClick}
         >
           {props.markers.map((marker, index) => (
