@@ -68,10 +68,6 @@ componentWillMount() {
       return (
         <div>
           <NavBar />
-          <div className="container">
-            <h1>Detailed Search</h1>
-            <SearchBar infoStore={this.infoStore}/>
-           </div>
           <img src={'../car.gif'} className="spinner"/>
         </div>
       )
