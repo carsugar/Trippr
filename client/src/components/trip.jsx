@@ -17,7 +17,8 @@ class Trip extends Component {
                    this.props.trip.startCity + '/' +
                    this.props.trip.endCity + '/' +
                    this.props.trip.tripDate + '/' +
-                   this.props.trip.id;
+                   this.props.trip.id + '/' +
+                   this.props.trip.seatPrice;
 
       browserHistory.push(link);
     }
