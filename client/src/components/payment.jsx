@@ -27,7 +27,6 @@ class Payment extends Component {
     this.setState({date: this.props.params.date});
     this.setState({id: this.props.params.id});
     this.setState({price: this.props.params.price});
-
   }
 
   chargeCustomer() {
