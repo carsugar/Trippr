@@ -40,22 +40,19 @@ class Directions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      resultsArray: [],
+      results: {}
     };
     this.postGoogleDirections = this.postGoogleDirections.bind(this)
   }
     postGoogleDirections(){
-      console.log('props/params inside postGoogleDirections', this.props)
-      var data = this.props
+      console.log('this: ', this)
+      console.log('+++++++++++++****props/params inside postGoogleDirections', this.props.TripList.trips)
+      var data = this.props.TripList.trips
       axios.post('/maps', data)
-       .then(function(result) {
+       .then((result) => {
         console.log('inside googleMap inside axios POST to /maps result: ',result)
-        console.log('inside googleMap inside axios POST to /maps result.start_location is: ',result.start_location)
-        // this.state.resultsArray = []
-        // resultsObj[this.props.id] = result
-        // resultsArray.push(resultsObj)
-        // this.state.origin = new google.maps.LatLng(result.start_location.lat, result.start_location.lng);
-        // this.state.destination = new google.maps.LatLng(result.start_location.lat, result.end_location.lng);
+        console.log('inside googleMap inside axios POST to /maps result.data.routes[0].legs[0] is: ',result.data.routes[0].legs[0])
+        this.setState({results: result.data.routes[0].legs[0]})
        })
        .catch(function(error) {
         console.log('error inside googleMap inside axios Post to /maps ', error)
@@ -65,9 +62,10 @@ class Directions extends Component {
 
 
   render() {
+    console.log('thisState is ', this.state)
     return (
           <div id="map">
-          <button onClick={this.postGoogleDirections}>CLICK ME</button>
+          <button onClick={this.postGoogleDirections}>CLICK ME I AM GOOGLEMAPS</button>
           </div>
     )
   }
