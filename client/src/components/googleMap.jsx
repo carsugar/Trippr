@@ -1,6 +1,5 @@
 import React from 'react'
 import {render} from 'react-dom';
-import API_KEY from '../../API_KEY.jsx';
 import axios from 'axios'
 
 //  props: {
