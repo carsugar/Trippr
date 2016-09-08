@@ -20,8 +20,6 @@ class Trip extends Component {
                    this.props.trip.id;
 
       browserHistory.push(link);
-      // use on payment page instead
-      // this.props.reserveSeat({passengerId: localStorage.getItem('id'), tripId: this.props.trip.id});
     }
 
     render() {
