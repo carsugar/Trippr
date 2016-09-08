@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {browserHistory} from 'react-router';
 import axios from 'axios';
-
+import Directions from './googleMap.jsx';
 import NavBar from './navBar.jsx';
 
 class CreateTrip extends Component {
@@ -22,6 +22,7 @@ class CreateTrip extends Component {
                    vehicleYear: '',
                    description: ''
                    };
+                   
     this.submitTrip = this.submitTrip.bind(this);
   }
 
@@ -53,7 +54,8 @@ class CreateTrip extends Component {
     }
     const that = this;
     tripObj.driverId = localStorage.getItem('id');
-    tripObj.driverName = localStorage.getItem('name')
+    tripObj.driverName = localStorage.getItem('name');
+
     axios.post('/createTrip',
       tripObj
     )
@@ -160,6 +162,7 @@ class CreateTrip extends Component {
                 <input type = 'submit' value = 'Create' className='btn btn-primary'/>
             </div>
         </form>
+        <Directions newTrip={this.state}/>
       </div>
     )
   }
