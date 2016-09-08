@@ -10,11 +10,17 @@ import CreateTrip from './src/components/createTrip.jsx';
 import Signup from './src/components/signUp.jsx';
 import Logout from './src/components/logout.jsx';
 import UserProfile from './src/components/userProfile.jsx';
+import Directions from './src/components/googleMap.jsx';
+
 
 class Landing extends Component {
   constructor(props) {
     super(props);
-    this.state = { endLocation: '' };
+    this.state = { 
+      endLocation: '' ,
+      endLocationLat: '',
+      endLocationLong: ''
+  };
     this.submitData = this.submitData.bind(this);
     this.onSuggestSelect = this.onSuggestSelect.bind(this);
   }
@@ -22,8 +28,15 @@ class Landing extends Component {
   
   onSuggestSelect(suggest){
     var city = suggest.gmaps.address_components[0].long_name;
+    var lat = suggest.location.lat;
+    var long = suggest.location.long;
     console.log(suggest, "Full obj");
-    this.setState( {endLocation: city} );
+    this.setState( {
+      endLocation: city,
+      endLocationLat: lat,
+      endLocationLong: long
+    });
+
   }
 
   submitData(e) {
@@ -31,6 +44,7 @@ class Landing extends Component {
     const link = '/app/' + this.state.endLocation
     browserHistory.push(link);
   }
+
 
 
   render() {
@@ -56,7 +70,9 @@ class Landing extends Component {
               </form>
           </div>
         </div>
+        <Directions latLong={this.state}/>
       </div>
+
     )
   }
 }

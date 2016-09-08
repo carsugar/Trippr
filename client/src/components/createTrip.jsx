@@ -22,14 +22,18 @@ class CreateTrip extends Component {
                    vehicleMake: '',
                    vehicleModel: '',
                    vehicleYear: '',
-                   description: ''
+                   description: '',
+                   startLat: '',
+                   startLong: '',
+                   endLat: '',
+                   endLong: ''
                    };
 
     this.submitTrip = this.submitTrip.bind(this);
     this.onSuggestStartSelect = this.onSuggestStartSelect.bind(this);
     this.onSuggestEndSelect = this.onSuggestEndSelect.bind(this);
-
   }
+
 
   handleChange(name, e) {
     let change = {};
@@ -55,16 +59,24 @@ class CreateTrip extends Component {
   }
 
   onSuggestStartSelect(suggest){
-    this.state.startSt = suggest.gmaps.address_components[0].long_name + suggest.gmaps.address_components[1].long_name;
+    this.state.startSt = suggest.gmaps.address_components[0].long_name + " " + suggest.gmaps.address_components[1].long_name;
     this.state.startCity = suggest.gmaps.address_components[3].long_name;
     this.state.startState = suggest.gmaps.address_components[5].short_name;
-  };
+    this.state.startLat = suggest.location.lat;
+    this.state.startLong = suggest.location.long;
+    console.log(suggest, "Full obj");
+  }
 
   onSuggestEndSelect(suggest){
-    this.state.endSt = suggest.gmaps.address_components[0].long_name + suggest.gmaps.address_components[1].long_name;
+    this.state.endSt = suggest.gmaps.address_components[0].long_name  + " " + suggest.gmaps.address_components[1].long_name;
     this.state.endCity = suggest.gmaps.address_components[3].long_name;
     this.state.endState = suggest.gmaps.address_components[5].short_name;
+    this.state.endLat = suggest.location.lat;
+    this.state.endLong = suggest.location.long;
+    renderGoogleMaps();
   };
+
+
 
   makeTrip(tripObj) {
     if(localStorage.getItem('token')) {
@@ -95,17 +107,15 @@ class CreateTrip extends Component {
           <h1>Create Your Trip</h1>
           <div className="col-md-6" id="CreateAndSearchTripsLeft">
               <label for="startAddress">Start Address</label>
-
-
-              <Geosuggest 
+            <Geosuggest 
                 type="text"
+                inputClassName="create_address"
                 name= "startAddress"
-                className="form-control"
                 placeholder = "Enter a start address"
                 onSuggestSelect={this.onSuggestStartSelect}
                 onFocus={this.onFocus}
                 onBlur={this.onBlur}
-              />
+            />
 
             <label for="driverInfo">Driver Information</label>
             <input
@@ -140,7 +150,7 @@ class CreateTrip extends Component {
               <Geosuggest 
                 type="text"
                 name= "endAddress"
-                className="form-control"
+                inputClassName="create_address"
                 placeholder = "Enter an end address"
                 onSuggestSelect={this.onSuggestEndSelect}
                 onFocus={this.onFocus}
@@ -171,6 +181,8 @@ class CreateTrip extends Component {
               <input type = 'submit' value = 'Create' className='btn btn-primary'/>
           </div>
         </form>
+
+
         <Directions newTrip={this.state}/>
       </div>
     )
