@@ -79,7 +79,7 @@ render((
   <Router history={browserHistory}>
     <Route path='/' component={Landing} />
     <Route path='app(/:location)' name='app' component={App} />
-    <Route path='payment/:driver/:start/:end/:date' name='payment' component={Payment} />
+    <Route path='payment/:driver/:start/:end/:date/:id' name='payment' component={Payment} />
     <Route path='create' component={CreateTrip} />
     <Route path='signUp' component={Signup} />
     <Route path='logOut' component={Logout} />
