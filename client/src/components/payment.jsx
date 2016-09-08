@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {render} from 'react-dom';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
+import moment from 'moment';
 
 import NavBar from './navBar.jsx';
 
@@ -122,12 +123,13 @@ class Payment extends Component {
       )
     }
     if (this.state.page === 'paymentSuccess') {
+      console.log(this.state.date)
       return (
         <div>
           <NavBar />
           <div className="container">
             <h1>You've got a spot!</h1>
-            <p>Thanks for your payment.  You are all set for your trip with {this.state.driver} from {this.state.start} to {this.state.end} on {this.state.date}.</p>
+            <p>Thanks for your payment.  You are all set for your trip with {this.state.driver} from {this.state.start} to {this.state.end} on {moment(this.state.date).format('MM-DD-YYYY')}.</p>
            </div>
         </div>
       )
