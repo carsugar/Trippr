@@ -221,7 +221,24 @@ p {
   display: flex;
   justify-content: center;
 }
-#Map {
+.googleMap {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+.mapButton {
+  height: 500px;
+  width: 500px;
+  margin: 0;
+}
+.mapContainerGeneral {
   height: 100%;
   margin: 0;
+}
+
+#tryGoogleMap {
+  height: 500px;
+  width: 500px;
+  margin: 0;
+  border: 1px black solid;
 }
