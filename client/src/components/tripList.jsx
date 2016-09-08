@@ -16,7 +16,9 @@ import Directions from './googleMap.jsx'
             return <Trip key={index} trip={trip} reserveSeat={props.reserveSeat}/>
            })}
          </div>
+         <div id="googleMapDirections">
          <Directions TripList={props}/>
+         </div>
        </div>
      );
   }
