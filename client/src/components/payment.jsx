@@ -117,8 +117,6 @@ class Payment extends Component {
       return (
         <div>
           <NavBar />
-          <div className="container">
-           </div>
           <img src={'/car.gif'} className="spinner"/>
         </div>
       )
