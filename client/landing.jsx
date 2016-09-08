@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
+import Payment from './src/components/payment.jsx';
 
 import App from './app.jsx'
 import NavBar from './src/components/navBar.jsx';

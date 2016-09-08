@@ -79,38 +79,46 @@ class Signup extends Component {
         <form className="signUp form-group" onSubmit={this.checkFilled}>
           <h1>Create Your Account</h1>
           <div>
+						<label for="fName">First Name</label>
             <input
               value = {this.state.firstName}
-              placeholder = 'Your First Name'
+              placeholder = 'Johnny'
               className="form-control"
               onChange = {this.handleChange.bind(this, 'firstName')}/>
           </div>
           <div>
+						<label for="lName">Last Name</label>
             <input
               value = {this.state.lastName}
-              placeholder = 'Your Last Name'
+              placeholder = 'Appleseed'
               className="form-control"
               onChange = {this.handleChange.bind(this, 'lastName')}/>
           </div>
           <div>
+						<label for="trips">What trips interest you?</label>
             <input
               value = {this.state.description}
-              placeholder = 'What trips interest you?'
+              placeholder = "Find my father"
               className="form-control"
               onChange = {this.handleChange.bind(this, 'description')}/>
           </div>
           <div>
+						<label for="inpEmail">Email Address</label>
             <input
               type = 'email'
+							pattern= "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
               value = {this.state.email}
               placeholder = 'Your Email'
               className="form-control"
-              onChange = {this.handleChange.bind(this, 'email')}/>
+              onChange = {this.handleChange.bind(this, 'email')}
+						/>
           </div>
           <div>
+						<label for='password'>Account Creation</label>
             <input
               value = {this.state.password}
               type = 'password'
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
               placeholder = 'Create Password'
               className="form-control"
               onChange = {this.handleChange.bind(this, 'password')}/>
