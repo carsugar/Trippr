@@ -6,10 +6,10 @@ import Directions from './googleMap.jsx'
 
   const TripList = (props) => {
     var directionsObj = {
-      startSt: this.props.startSt,
-      startCity: this.props.startCity,
-      endSt: this.props.endSt,
-      endCity: this.props.endCity
+      startSt: props.startSt,
+      startCity: props.startCity,
+      endSt: props.endSt,
+      endCity: props.endCity
     }
 
 

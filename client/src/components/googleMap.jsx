@@ -46,9 +46,8 @@ class Directions extends Component {
   }
     postGoogleDirections(){
       console.log('props/params inside postGoogleDirections', this.props)
-      axios.post('/maps', {
-        data: this.props
-       })
+      var data = this.props
+      axios.post('/maps', data)
        .then(function(result) {
         console.log('inside googleMap inside axios POST to /maps result: ',result)
         console.log('inside googleMap inside axios POST to /maps result.start_location is: ',result.start_location)
