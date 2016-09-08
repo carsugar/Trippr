@@ -8,6 +8,7 @@ var googleMapModel = module.exports
 googleMapModel.getLatLong = function(params){
 	//params should be start and end addresses
 	console.log('params inside googleMapModel getLatLong are: ',params)
+	params = params[0] //take first trip obj
 	return new Promise(function(resolve, reject) {
 		var options = {
 	    uri: 'https://maps.googleapis.com/maps/api/directions/json',
@@ -26,6 +27,24 @@ googleMapModel.getLatLong = function(params){
 		})
 	})
 }
+
+
+// googleMapModel.takeArrayOfTripObjAndPushResultsIntoKeyValue = function(array) {
+// 	console.log('***************************array inside googleMapModel bigarray func: ',array)
+// 	array.map(function(tripObj) {
+// 		console.log('inside model tripOBj is', tripObj)
+// 		var newObj = {
+// 			startSt: tripObj.startSt,
+// 			startCity: tripObj.startCity,
+// 			endSt: tripObj.endSt,
+// 			endCity: tripObj.endCity
+// 		}
+// 		return {
+// 			"id": tripObj.id,
+// 			"latlng" : googleMapModel.getLatLong(newObj)
+// 		}
+// 	})
+// }
 
 
 

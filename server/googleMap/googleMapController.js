@@ -12,16 +12,16 @@ console.log('we are inside googleMapController GENERAL')
 module.exports = {
 	getMaps: function(req, res) {
 		console.log('we are inside googleMapController inside getMap')
-		console.log('inside googleMapController inside getMap req.body is', req.body)
+		console.log('******inside googleMapController inside getMap req.body is', req.body)
 		googleMapModel.getLatLong(req.body)
-    .then(function (results) {
+       .then(function (results) {
         console.log('inside googleMapController inside getMaps result is ', results);
         res.status(200).send(results)
-    })
-    .catch(function (err) {
+        })
+        .catch(function (err) {
     	console.log('inside googleMapController inside getMaps ERROR is : ',err)
     	res.end(err)
-    });
+        });
 	}
 }
 
