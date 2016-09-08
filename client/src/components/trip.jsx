@@ -14,9 +14,9 @@ class Trip extends Component {
       console.log('trip', this.props.trip)
       const link = '/payment/' +
                    this.props.trip.driverName + '/' +
-                   this.props.trip.startCity //+ '/' +
-                  //  this.props.trip.endCity + '/' +
-                  //  this.props.trip.tripDate;
+                   this.props.trip.startCity + '/' +
+                   this.props.trip.endCity + '/' +
+                   this.props.trip.tripDate;
 
       browserHistory.push(link);
       // use on payment page instead
