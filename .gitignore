@@ -3,4 +3,3 @@ client/bundle.js
 /server/testData.js
 .env
 stripeConfig.js
-/client/API_KEY.js

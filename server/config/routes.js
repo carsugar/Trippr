@@ -3,12 +3,20 @@ const path = require('path');
 const tripController = require('../trips/tripController');
 const userController = require('../users/userController');
 const paymentController = require('../payment/paymentController');
+const googleMapController = require('../googleMap/googleMapController')
+var _ = require('underscore')
 
 module.exports = (app, express) => {
 
   /*
   *  User API Requests
   */
+
+  //GOOGLE MAPS
+  app.post('/maps',googleMapController.getMaps)
+
+
+
 
   app.post('/pay', paymentController.chargeCustomer);
   // Takes the following:
