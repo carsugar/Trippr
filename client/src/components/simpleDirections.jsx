@@ -17,6 +17,9 @@ export default class SimpleDirections extends Component{
 		}
 	}
 
+
+
+
   componentDidUpdate() {
     console.log("***COMPONENT WILLRECEIVEPROPS****")
     const DirectionsService = new google.maps.DirectionsService();
