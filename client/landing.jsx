@@ -70,7 +70,6 @@ class Landing extends Component {
               </form>
           </div>
         </div>
-        <Directions latLong={this.state}/>
       </div>
 
     )
