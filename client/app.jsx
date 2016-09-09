@@ -54,20 +54,24 @@ class App extends Component {
     });
   }
 
-  componentWillMount() {
+componentWillMount() {
     if(this.props.params.location) {
       this.setState({landingLocation: this.props.params.location});
       this.getTrips({endLocation: this.state.landingLocation})
       this.props.params.location = undefined;
       this.state.landingLocation = ''
     }
-  }
+}
 
   render () {
     if (this.state.isLoading) {
       return (
         <div>
           <NavBar />
+          <div className="container">
+            <h1>Detailed Search</h1>
+            <SearchBar infoStore={this.infoStore}/>
+           </div>
           <img src={'../car.gif'} className="spinner"/>
         </div>
       )
