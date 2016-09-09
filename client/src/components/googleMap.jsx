@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
-import SimpleMap from './simpleMap.jsx';
+import SimpleDirections from './simpleDirections.jsx';
 import update from 'react-addons-update';
 
 //  props: {
@@ -28,25 +28,6 @@ import update from 'react-addons-update';
 //   ]
 // }
 
-//props inside directions: 
- // var directionsObj = {
- //      startSt: this.props.startSt,
- //      startCity: this.props.startCity,
- //      endSt: this.props.endSt,
- //      endCity: this.props.endCity
- //    }
-
-// this.state = {
-//   end_location: {
-//     lat,
-//     lng
-//   },
-//   start_location: {
-//     lat:,
-//     lng: 
-//   }
-
-// }
 
 
 
@@ -81,18 +62,11 @@ class Directions extends Component {
         this.setState({results: result.data.routes[0].legs[0]})
         var centerPoints = this.findCenterPoints(result.data.routes[0].legs[0])
         this.setState({centerPoints: centerPoints})
-
-        // var markerLat = result.data.routes[0].legs[0].start_location.lat
-        // console.log('markerLat is ', markerLat)
-        // var markerLng = result.data.routes[0].legs[0].start_location.lng
-        // this.setState({markers[0].position.lat: markerLat})
-        // this.setState({markers[0].position.lng: markerLng})
        })
        .catch(function(error) {
         console.log('error inside googleMap inside axios Post to /maps ', error)
        })
   }
-//end location lat this.state.end_location.lat
   componentDidMount() {
     this.postGoogleDirections()
     setTimeout(() => {
@@ -105,7 +79,7 @@ class Directions extends Component {
               lng: (this.state.results.end_location)? this.state.results.end_location.lng : 14
             },
             defaultAnimation: 2,
-            key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
+            key: Date.now(), 
           },
         ],
       });
@@ -130,10 +104,7 @@ class Directions extends Component {
       return {}
     }
   }
-  /*
-   * This is called when you click on the map.
-   * Go and try click now.
-   */
+
   handleMapClick(event) {
     let { markers } = this.state;
     markers = update(markers, {
@@ -141,7 +112,7 @@ class Directions extends Component {
         {
           position: event.latLng,
           defaultAnimation: 2,
-          key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
+          key: Date.now(), 
         },
       ],
     });
@@ -149,11 +120,6 @@ class Directions extends Component {
   }
 
   handleMarkerRightclick(index, event) {
-    /*
-     * All you modify is data, and the view is driven by data.
-     * This is so called data-driven-development. (And yes, it's now in
-     * web front end and even with google maps API.)
-     */
     let { markers } = this.state;
     markers = update(markers, {
       $splice: [
@@ -162,26 +128,16 @@ class Directions extends Component {
     });
     this.setState({ markers });
   }
-
-
-
   render() {
     console.log('__thisState is ', this.state)
     return (
-      <div className="mapContainerGeneral">
-          <div id="mapButton">
-            <button onClick={this.postGoogleDirections}>CLICK ME I AM GOOGLEMAPS</button>
-          </div>
-          LALALALALALDREW SAID PUT TEXT HERE LALALALA
-          <div id="tryGoogleMap">
-          <SimpleMap 
-            markers={this.state.markers}
+      <div className="mapContainerGeneral">       
+         <div id="tryGoogleMap">
+          <SimpleDirections
             results={this.state.results}
-            onMapClick={this.handleMapClick}
-            onMarkerRightclick={this.handleMarkerRightclick}
             centerPoints={this.state.centerPoints}
-          />            
-          </div>
+          />
+         </div>
       </div>
     )
   }
