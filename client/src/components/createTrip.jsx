@@ -182,8 +182,6 @@ class CreateTrip extends Component {
           </div>
         </form>
 
-
-        <Directions newTrip={this.state}/>
       </div>
     )
   }
