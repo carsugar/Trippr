@@ -11,6 +11,7 @@ class SearchBar extends Component {
                    startDate: '',
                    endDate: ''
                  };
+    this.submitData = this.submitData.bind(this);
   }
 
   handleChange(name, e) {
@@ -29,6 +30,11 @@ class SearchBar extends Component {
                    endDate: ''
                  });
   }
+
+  componentDidMount(){
+    this.submitData();
+  }
+  
 
   render() {
     return (
