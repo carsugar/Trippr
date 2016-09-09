@@ -243,14 +243,14 @@ p {
 
 #tryGoogleMap {
   height: 500px;
-  width: 500px;
-  margin: 0;
-  border: 1px black solid;
+  width: 607px;
+  margin: 3px 2px 33px 273px;
+  border: 2px black solid;
 }
 
 #tryDirectionsGoogleMap {
   height: 100%;
-   width: 500px;
-  margin: 0;
+   width: 607px;
+  margin: 3px 2px 33px 278px;
   border: 1px black solid;
 }
