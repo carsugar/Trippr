@@ -247,3 +247,10 @@ p {
   margin: 0;
   border: 1px black solid;
 }
+
+#tryDirectionsGoogleMap {
+  height: 100%;
+   width: 500px;
+  margin: 0;
+  border: 1px black solid;
+}
