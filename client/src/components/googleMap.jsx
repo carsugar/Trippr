@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
-import SimpleMap from "./simpleMap.jsx";
+import SimpleMap from './simpleMap.jsx';
 import update from 'react-addons-update';
 
 //  props: {
@@ -72,7 +72,7 @@ class Directions extends Component {
   }
   postGoogleDirections(){
       console.log('this: ', this)
-      console.log('+++++++++++++****props/params inside postGoogleDirections', this.props.TripList.trips)
+      console.log('+++props/params inside postGoogleDirections', this.props.TripList.trips)
       var data = this.props.TripList.trips
       axios.post('/maps', data)
        .then((result) => {
@@ -81,6 +81,12 @@ class Directions extends Component {
         this.setState({results: result.data.routes[0].legs[0]})
         var centerPoints = this.findCenterPoints(result.data.routes[0].legs[0])
         this.setState({centerPoints: centerPoints})
+
+        // var markerLat = result.data.routes[0].legs[0].start_location.lat
+        // console.log('markerLat is ', markerLat)
+        // var markerLng = result.data.routes[0].legs[0].start_location.lng
+        // this.setState({markers[0].position.lat: markerLat})
+        // this.setState({markers[0].position.lng: markerLng})
        })
        .catch(function(error) {
         console.log('error inside googleMap inside axios Post to /maps ', error)
@@ -95,8 +101,8 @@ class Directions extends Component {
         $push: [
           {
             position: {
-              lat: 25.99,
-              lng: 122.9,
+              lat: (this.state.results.end_location)? this.state.results.end_location.lat : 14,
+              lng: (this.state.results.end_location)? this.state.results.end_location.lng : 14
             },
             defaultAnimation: 2,
             key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
@@ -110,8 +116,9 @@ class Directions extends Component {
   findCenterPoints(params) {
     console.log('we are inside findCenterPoints inside googleMap')
     if (params) {
-    var avgLat = (params.start_location.lat - params.end_location.lat)/2
-    var avgLng = (params.start_location.lng - params.end_location.lng)/2
+    var avgLat = (params.start_location.lat + params.end_location.lat)/2
+    var avgLng = (params.start_location.lng + params.end_location.lng)/2
+
     
     console.log('avgLat inside googleMap jsx is: ', avgLat)
     return {
