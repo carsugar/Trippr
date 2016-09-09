@@ -1,5 +1,7 @@
 var secret_key = require('../../stripeConfig.js');
-var stripe = require('stripe')(secret_key);
+var path = require('path')
+require('dotenv').config();
+var stripe = require('stripe')(process.env.secret_key);
 var Promise = require('bluebird');
 
 module.exports = {

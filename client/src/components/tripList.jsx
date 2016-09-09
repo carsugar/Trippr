@@ -11,14 +11,15 @@ import Directions from './googleMap.jsx'
 
      return (
        <div className="container">
+        <div id="googleMapDirections">
+         <Directions TripList={props}/>
+         </div>
          <div className="tripContainer">
            {props.trips.map((trip, index) => {
             return <Trip key={index} trip={trip} reserveSeat={props.reserveSeat}/>
            })}
          </div>
-         <div id="googleMapDirections">
-         <Directions TripList={props}/>
-         </div>
+        
        </div>
      );
   }
