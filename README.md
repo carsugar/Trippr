@@ -24,6 +24,8 @@ Open a browser and type localhost:3000 to see the application.
 - Express
 - Sequelize
 - React
+- Google Maps
+- Stripe
 - Bootstrap
 - PostgreSQL
 
