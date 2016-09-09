@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
-import SimpleMap from './simpleMap.jsx';
+import SimpleDirections from './simpleDirections.jsx';
 import update from 'react-addons-update';
-
 //  props: {
 //       reserveSeat: function() {},
 //       trips : [
@@ -163,6 +162,17 @@ class Directions extends Component {
     this.setState({ markers });
   }
 
+  //Put back under LALALA
+  // <div id="tryGoogleMap">
+  //         <SimpleMap 
+  //           markers={this.state.markers}
+  //           results={this.state.results}
+  //           onMapClick={this.handleMapClick}
+  //           onMarkerRightclick={this.handleMarkerRightclick}
+  //           centerPoints={this.state.centerPoints}
+  //         />            
+  //         </div>
+
 
 
   render() {
@@ -171,17 +181,13 @@ class Directions extends Component {
       <div className="mapContainerGeneral">
           <div id="mapButton">
             <button onClick={this.postGoogleDirections}>CLICK ME I AM GOOGLEMAPS</button>
-          </div>
-          LALALALALALDREW SAID PUT TEXT HERE LALALALA
-          <div id="tryGoogleMap">
-          <SimpleMap 
-            markers={this.state.markers}
+          </div>         
+         <div id="tryGoogleMap">
+          <SimpleDirections
             results={this.state.results}
-            onMapClick={this.handleMapClick}
-            onMarkerRightclick={this.handleMarkerRightclick}
             centerPoints={this.state.centerPoints}
-          />            
-          </div>
+          />
+         </div>
       </div>
     )
   }

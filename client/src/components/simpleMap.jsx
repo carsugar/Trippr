@@ -15,12 +15,12 @@ export default class SimpleMap extends Component{
   
 
 
-  shouldComponentUpdate(nextProps, nextState) {
-  console.log('nextProps',nextProps.centerPoints)
-  console.log('this.props.centerPoints',this.props.centerPoints)
+  // shouldComponentUpdate(nextProps, nextState) {
+  // console.log('nextProps',nextProps.centerPoints)
+  // console.log('this.props.centerPoints',this.props.centerPoints)
 
-  return nextProps.centerPoints !== this.props.centerPoints;
-  }
+  // return nextProps.centerPoints !== this.props.centerPoints;
+  // }
 
   //   if (this.props.centerPoints) {
   // console.log('props centerpoints lat', this.props.centerPoints.avgLat)
