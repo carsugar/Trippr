@@ -131,10 +131,7 @@ class Directions extends Component {
   render() {
     console.log('__thisState is ', this.state)
     return (
-      <div className="mapContainerGeneral">
-          <div id="mapButton">
-            <button onClick={this.postGoogleDirections}>CLICK ME I AM GOOGLEMAPS</button>
-          </div>         
+      <div className="mapContainerGeneral">       
          <div id="tryGoogleMap">
           <SimpleDirections
             results={this.state.results}
