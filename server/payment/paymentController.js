@@ -1,4 +1,3 @@
-var secret_key = require('../../stripeConfig.js');
 var path = require('path')
 require('dotenv').config();
 var stripe = require('stripe')(process.env.secret_key);
