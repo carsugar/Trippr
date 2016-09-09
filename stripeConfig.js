@@ -1,3 +1,3 @@
-var secret_key = 'sk_test_js5Si1xtP8zyTYYu8MZzkB0O';
+var secret_key = 'ENTER';
 
 module.exports = secret_key;
