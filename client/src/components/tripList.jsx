@@ -5,12 +5,8 @@ import Directions from './googleMap.jsx'
    
 
   const TripList = (props) => {
-    var directionsObj = {
-      startSt: props.startSt,
-      startCity: props.startCity,
-      endSt: props.endSt,
-      endCity: props.endCity
-    }
+    console.log('Inside TripList props are', props)
+    
 
 
      return (
@@ -20,7 +16,9 @@ import Directions from './googleMap.jsx'
             return <Trip key={index} trip={trip} reserveSeat={props.reserveSeat}/>
            })}
          </div>
-         <Directions directions={directionsObj}/>
+         <div id="googleMapDirections">
+         <Directions TripList={props}/>
+         </div>
        </div>
      );
   }
