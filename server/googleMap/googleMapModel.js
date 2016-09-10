@@ -15,7 +15,7 @@ googleMapModel.getLatLong = function(params){
 	    qs: {
 	        origin: params.startSt + params.startCity, // -> uri + '?access_token=xxxxx%20xxxxx'
 	        destination: params.endSt + params.endCity,
-	        key: ENV['google_maps_API_KEY']
+	        key: process.env.google_maps_API_KEY
 	    }
 		};
 		request(options, function(error, response, body) {
